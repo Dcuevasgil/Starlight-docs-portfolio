@@ -1,0 +1,278 @@
+---
+title: 'Proyectos'
+description: 'Componente que muestra una lista interactiva de proyectos de desarrollo, con funcionalidades de búsqueda, paginación y visualización dinámica a partir de datos obtenidos desde una API.'
+---
+
+## Componente proyectos
+
+## Descripción
+
+Este componente es responsable de mostrar una lista de proyectos de desarrollo, obtenidos desde un API que proporciona información sobre cada proyecto, como su nombre, descripción, tecnologías utilizadas, y una imagen representativa. Los usuarios pueden buscar proyectos por nombre, navegar a través de una lista paginada y restablecer la vista inicial.
+
+## Estructura General
+
+```astro
+<div class="w-5/6 ml-[16.66%] min-h-full bg-gray-100 flex flex-col items-center justify-center">
+    <section id="proyectos" class="w-full py-5 bg-slate-100 flex flex-col items-start">
+      <h1 class="text-3xl md:text-4xl font-bold mt-3 p-5 text-slate-600">
+        Proyectos
+      </h1>
+      <div class="flex justify-between items-center w-full">
+        <div class="relative pl-5 flex">
+          <!-- Campo de búsqueda -->
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Introduce 3 letras"
+            class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500"
+          />
+          <span class="pl-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-lg">
+            &#128269;
+          </span>
+          <button
+            id="search-button"
+            class="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300"
+          >
+            Buscar
+          </button>
+          <button
+            id="reset-projects-button"
+            class="ml-2 px-4 py-2 bg-gray-400 text-white rounded-lg hover:bg-gray-500 transition duration-300"
+          >
+            Restablecer Proyectos
+          </button>
+        </div>
+      </div>
+      <div
+        id="grid-proyectos"
+        class="flex justify-center items-center border border-gray-300 bg-white rounded-lg p-4 shadow-md mt-5 w-full"
+      >
+        <!-- Aquí se insertarán dinámicamente los proyectos -->
+      </div>
+      <div class="flex justify-center items-center w-full mt-5">
+        <button
+          id="prev-button"
+          class="p-2 text-orange-500 text-2xl rounded-full hover:bg-teal-600 transition duration-300"
+        >
+          &#9664;
+        </button>
+        <span
+          id="page-indicator"
+          class="mx-4 text-gray-600 text-lg font-semibold"
+        >
+          Proyecto 1
+        </span>
+        <button
+          id="next-button"
+          class="p-2 text-orange-500 text-2xl rounded-full hover:bg-teal-600 transition duration-300"
+        >
+          &#9654;
+        </button>
+      </div>
+    </section>
+</div>
+  
+<script>
+    type Tecnologia = {
+      url_aprendizaje: string;
+      icono: string;
+      nombre_tecnologia: string;
+    };
+  
+    type Proyecto = {
+      projectName: string;
+      url_demo: string;
+      picture: string;
+      description: string;
+      tecnologias: Tecnologia[];
+    };
+  
+    let proyectos: Proyecto[] = [];
+    let currentIndex = 0;
+    let filteredProyectos: Proyecto[] = [];
+  
+    async function getProjects() {
+      try {
+        const response = await fetch("http://localhost:8084/api/v1/projects");
+        if (!response.ok) throw new Error("No se encontraron proyectos");
+          
+        const data = await response.json();
+  
+        // Acceder a la lista de proyectos
+        const projects = data.content || data; // Si `content` no existe, usa `data` directamente
+  
+        // Filtrar proyectos por nombre único
+        proyectos = projects.filter((proyecto: { projectName: string; }, index: number, self: any[]) =>
+            index === self.findIndex((p) => p.projectName === proyecto.projectName)
+        );
+  
+        filteredProyectos = proyectos;
+        showProject(currentIndex);
+        updateNavigation();
+      } catch (error) {
+        console.error("Error al cargar los proyectos:", error);
+      }
+    }
+  
+    function navigateProject(direction: number) {
+      const newIndex = currentIndex + direction;
+  
+      if (newIndex >= 0 && newIndex < filteredProyectos.length) {
+        currentIndex = newIndex;
+        showProject(currentIndex);
+        updateNavigation();
+      }
+    }
+  
+    function updateNavigation() {
+      const pageIndicator = document.getElementById("page-indicator");
+  
+      if (pageIndicator) {
+        pageIndicator.textContent = `Proyecto ${currentIndex + 1}`;
+      } else {
+        console.error("El elemento 'pageIndicator' no fue encontrado.");
+      }
+  
+      const prevButton = document.getElementById("prev-button") as HTMLButtonElement;
+      const nextButton = document.getElementById("next-button") as HTMLButtonElement;
+  
+      prevButton.disabled = currentIndex === 0;
+      nextButton.disabled = currentIndex === filteredProyectos.length - 1;
+    }
+  
+    function showProject(index: number) {
+      const proyectosGrid = document.getElementById("grid-proyectos");
+      if (!proyectosGrid) return;
+  
+      proyectosGrid.innerHTML = "";
+  
+      if (filteredProyectos.length > 0) {
+        const proyecto = filteredProyectos[index];
+        const tecnologias = Array.isArray(proyecto.tecnologias) ? proyecto.tecnologias : [];
+  
+        const projectBlock = document.createElement("div");
+        projectBlock.classList.add(
+          "p-4",
+          "border",
+          "border-gray-300",
+          "rounded-lg",
+          "shadow-md",
+          "bg-white",
+          "flex",
+          "flex-col",
+          "justify-between"
+        );
+  
+        projectBlock.innerHTML = `
+          <h3 class="text-xl font-bold text-gray-800">${proyecto.projectName}</h3>
+          <a href="${proyecto.url_demo}">
+            <img
+              src="src/img/${proyecto.picture}"
+              alt="Imagen de ${proyecto.picture}"
+              class="w-full h-48 object-contain"
+            />
+          </a>
+          <p class="text-gray-600 mt-1">
+            <span class="font-medium">Descripción</span><br>
+            ${proyecto.description}
+          </p>
+          <p class="text-gray-600 mt-1">
+            <span class="font-medium">Tecnologías</span><br>
+            <ul class="list-none list-inside text-gray-500 mb-4 gap-5 font-semibold">
+              ${tecnologias
+                .map(
+                  (tecnologia) => `
+                <li class="flex items-center gap-2 mt-2">
+                  <img
+                    src="${tecnologia.icono}"
+                    alt="${tecnologia.nombre_tecnologia}"
+                    class="w-8 h-8"
+                  />
+                  <a href="${tecnologia.url_aprendizaje}" class="hover:underline text-blue-500">${tecnologia.nombre_tecnologia}</a>
+                </li>
+              `
+                )
+                .join("")}
+            </ul>
+          </p>
+        `;
+  
+        proyectosGrid.appendChild(projectBlock);
+      }
+    }
+  
+    document.addEventListener("DOMContentLoaded", () => {
+      getProjects();
+  
+      const prevButton = document.getElementById("prev-button");
+      const nextButton = document.getElementById("next-button");
+      const searchButton = document.getElementById("search-button");
+      const resetProjectsButton = document.getElementById("reset-projects-button");
+  
+      if (prevButton) {
+        prevButton.addEventListener("click", () => navigateProject(-1));
+      }
+  
+      if (nextButton) {
+        nextButton.addEventListener("click", () => navigateProject(1));
+      }
+  
+      if (searchButton) {
+        searchButton.addEventListener("click", () => {
+          const searchInput = (
+            document.getElementById("search-input") as HTMLInputElement
+          ).value.toLowerCase();
+  
+          filteredProyectos = proyectos.filter((proyecto) =>
+            proyecto.projectName.toLowerCase().includes(searchInput)
+          );
+  
+          currentIndex = 0;
+          showProject(currentIndex);
+          updateNavigation();
+        });
+      }
+  
+      if (resetProjectsButton) {
+        resetProjectsButton.addEventListener("click", () => {
+          filteredProyectos = proyectos;
+          currentIndex = 0;
+          showProject(currentIndex);
+          updateNavigation();
+        });
+      }
+    });
+</script>
+```
+
+## Explicación Detallada de Clases y Estilos Utilizados
+
+### Contenedor Principal
+
+El contenedor principal de este componente tiene las siguientes clases:
+
+- **`w-5/6`**: El ancho del contenedor ocupa el 83.33% del contenedor padre.
+- **`ml-[16.66%]`**: Aplica un margen izquierdo del 16.66% para centrar el contenedor.
+- **`min-h-full`**: Establece una altura mínima igual a la altura del contenedor padre.
+- **`bg-gray-100`**: Aplica un fondo gris claro para diferenciar esta sección del resto de la página.
+- **`flex flex-col`**: Establece un contenedor flexible y vertical.
+- **`items-center justify-center`**: Centra el contenido tanto vertical como horizontalmente.
+
+## Clases de Estilo en los Elementos de la Interfaz
+
+- **`text-3xl md:text-4xl`**: El ancho del contenedor ocupa el 83.33% del contenedor padre.
+- **`font-bold`**: Aplica un margen izquierdo del 16.66% para centrar el contenedor.
+- **`py-5 bg-slate-100`**: Establece una altura mínima igual a la altura del contenedor padre.
+- **`rounded-lg`**: Aplica un fondo gris claro para diferenciar esta sección del resto de la página.
+- **`hover:bg-blue-600`**: Establece un contenedor flexible y vertical.
+- **`transition duration-300`**: Centra el contenido tanto vertical como horizontalmente.
+
+## Recursos Empleados
+
+Frontend: Utiliza `Astro`, `Tailwind` y `Figma` para el diseño visual.
+JavaScript: Gestiona la lógica de búsqueda, paginación y carga dinámica de proyectos desde el API.
+API: El componente hace uso de un endpoint RESTful (`/api/v1/projects`) para obtener los datos de los proyectos de desarrollo.
+
+## Conclusión
+
+Este componente proporciona una interfaz interactiva para explorar proyectos, integrando funcionalidades de búsqueda, visualización dinámica y paginación. Gracias al uso de una API, los proyectos se actualizan y se gestionan de forma eficiente, brindando una experiencia de usuario fluida y atractiva.

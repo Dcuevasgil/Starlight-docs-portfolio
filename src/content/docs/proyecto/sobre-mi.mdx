@@ -1,0 +1,138 @@
+---
+title: Sobre Mi
+description: Explicación detallada del componente "Sobre Mi", incluyendo clases, estilos y recursos utilizados en su diseño e implementación.
+---
+
+# Componente Sobre Mi
+
+El **Componente Sobre Mi** es una sección que proporciona información sobre el desarrollador. Incluye un título, descripción, enfoque y los idiomas que maneja. En este documento se detalla la estructura, clases y recursos empleados para su creación.
+
+---
+
+## Estructura General del Componente
+
+El **Componente Sobre Mi** está compuesto por un contenedor `<div>` que envuelve el contenido de la sección "Sobre mí". Dentro de este contenedor, se encuentra una sección con un borde, que contiene el título, la descripción, el enfoque y los idiomas del desarrollador.
+
+### Código del Componente
+
+```astro
+import SobreMi from '../componentes/Sobre-mi.astro'
+
+<SobreMi>
+    <div class="w-5/6 ml-[16.66%] min-h-full bg-gray-100"> 
+        <section id="sobre-mi" class="w-full py-5 bg-slate-100">
+            <div class="p-5 w-full h-full overflow-auto">
+                <h1 class="text-3xl md:text-4xl font-bold mb-10 text-left text-slate-600">Sobre mi</h1>
+                <div class="border-2 border-aquamarine-600 bg-white rounded-lg">
+                    <p class="mt-1 text-gray-600 font-medium text-lg mx-4">
+                    <span id="miTitulo" class="text-xl font-bold text-gray-800">
+                    </span>,
+                    <p class="mt-1 text-gray-600 font-medium text-lg mb-5 mx-4" id="miDescripcion">
+                    </p>
+                    <p class="mt-1 text-gray-600 font-medium text-lg mb-5 mx-4" id="miEnfoque">
+                    </p>
+                    <p class="mt-1 text-gray-600 font-medium text-lg  mx-4">
+                        <span class="text-xl font-bold text-gray-800">Idiomas:
+                        <p class=" text-gray-600 font-medium text-lg mb-7 mx-4" id="misIdiomas">
+                        </p>
+                    </span>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <script>
+        try {
+            fetch('src/datos/sobreMi.json')
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Error al cargar el archivo JSON');
+                }
+                return response.json(); // Parsear el JSON
+            })
+            .then((data) => {
+                let titulo = document.getElementById('miTitulo');
+                if (titulo) titulo.textContent = data.titulo;
+
+                let descripcion = document.getElementById('miDescripcion');
+                if (descripcion) descripcion.textContent = data.descripcion;
+
+                let enfoque = document.getElementById('miEnfoque');
+                if (enfoque) enfoque.textContent = data.enfoque;
+
+                let idiomas = document.getElementById('misIdiomas');
+                if (idiomas) idiomas.textContent = data.idiomas;
+            })
+            .catch((error) => {
+                console.error('Error:', error); // Manejo de errores
+            });
+        } catch (e) {
+            console.error('Error al procesar el fetch', e);
+        }
+    </script>
+</SobreMi>
+```
+
+---
+
+## Explicación de las Clases y Estilos
+
+### Contenedor Principal
+
+El contenedor principal de este componente tiene las siguientes clases:
+
+- **`w-5/6`**: El ancho del contenedor ocupa el 83.33% del contenedor padre.
+- **`ml-[16.66%]`**: Aplica un margen izquierdo del 16.66% para centrar el contenedor.
+- **`min-h-full`**: Establece una altura mínima igual a la altura del contenedor padre.
+- **`bg-gray-100`**: Aplica un fondo gris claro para diferenciar esta sección del resto de la página.
+
+### Sección "Sobre mí"
+
+La sección "Sobre mí" tiene las siguientes clases:
+
+- **`w-full`**: Ocupa todo el ancho disponible del contenedor.
+- **`py-5`**: Aplica un padding vertical de 5 unidades para espaciar el contenido.
+- **`bg-slate-100`**: Aplica un fondo gris claro para la sección.
+- **`p-5`**: Aplica un padding interno de 5 unidades a la sección.
+
+### Contenedor con Borde
+
+Este contenedor tiene un borde y otras clases para darle estilo:
+
+- **`border-2`**: Aplica un borde de 2 píxeles de grosor.
+- **`border-aquamarine-600`**: Define el color del borde como aquamarine.
+- **`bg-white`**: Aplica un fondo blanco al contenedor.
+- **`rounded-lg`**: Aplica bordes redondeados al contenedor.
+
+### Títulos y Texto
+
+Los párrafos dentro del contenedor utilizan las siguientes clases:
+
+- **`mt-1`**: Aplica un margen superior de 1 unidad.
+- **`text-gray-600`**: Establece el color del texto en gris oscuro.
+- **`font-medium`**: Aplica un peso de fuente medio.
+- **`text-lg`**: Establece un tamaño de fuente grande.
+- **`mx-4`**: Aplica un margen horizontal de 4 unidades.
+- **`text-xl`**: Define el tamaño de la fuente como extra grande para los títulos dentro de los párrafos.
+
+---
+
+## Recursos Utilizados
+
+### Archivo JSON
+
+Este componente carga los datos desde un archivo **`sobreMi.json`** que contiene los siguientes campos:
+
+- **`titulo`**: Título de la sección "Sobre mí".
+- **`descripcion`**: Descripción del desarrollador.
+- **`enfoque`**: Descripción del enfoque profesional.
+- **`idiomas`**: Idiomas que maneja el desarrollador.
+
+El archivo **`sobreMi.json`** se encuentra en **`src/datos/sobreMi.json`**.
+
+---
+
+## Conclusión
+
+El componente **Sobre Mi** proporciona una presentación clara y estructurada sobre el desarrollador, incluyendo una breve descripción y los idiomas que maneja. El uso de **Tailwind CSS** permite crear una sección limpia y responsiva, adaptándose a diferentes tamaños de pantalla. La integración del archivo JSON proporciona una manera flexible y fácil de gestionar el contenido dinámicamente.

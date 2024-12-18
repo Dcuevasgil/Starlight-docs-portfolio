@@ -1,0 +1,62 @@
+<div class="w-5/6 ml-[16.66%] min-h-full bg-gray-100">     
+    <!-- Sección "Sobre mí" -->
+    <section id="sobre-mi" class="w-full py-5 bg-slate-100">
+        <div class="p-5 w-full h-full overflow-auto">
+            <h1 class="text-3xl md:text-4xl font-bold mb-10 text-left text-slate-600">Sobre mi</h1>
+            <!-- Contenedor con borde negro -->
+            <div class="border-2 border-aquamarine-600 bg-white rounded-lg">
+                <p class="mt-1 text-gray-600 font-medium text-lg mx-4">
+                  <span id="miTitulo" class="text-xl font-bold text-gray-800">
+  
+                  </span>,
+                <p class="mt-1 text-gray-600 font-medium text-lg mb-5 mx-4" id="miDescripcion">
+  
+                </p>
+                <p class="mt-1 text-gray-600 font-medium text-lg mb-5 mx-4" id="miEnfoque">
+                    
+                </p>
+                <p class="mt-1 text-gray-600 font-medium text-lg  mx-4">
+                    <span class="text-xl font-bold text-gray-800">Idiomas:
+                      <p class=" text-gray-600 font-medium text-lg mb-7 mx-4" id="misIdiomas">
+  
+                      </p>
+                  </span> 
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+  
+<script>
+    fetch('src/datos/sobreMi.json')
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error('Error al cargar el archivo JSON');
+        }
+        return response.json(); // Parsear el JSON
+    })
+    .then((data) => {
+        let titulo = document.getElementById('miTitulo');
+        if(titulo != null) {
+            titulo.textContent = data.titulo;
+        }
+        
+        let descripcion = document.getElementById('miDescripcion')
+        if(descripcion != null) {
+            descripcion.textContent = data.descripcion;
+        }
+    
+        let enfoque = document.getElementById('miEnfoque')
+        if(enfoque != null) {
+            enfoque.textContent = data.enfoque;
+        }
+    
+        let idiomas = document.getElementById('misIdiomas')
+        if(idiomas != null) {
+            idiomas.textContent = data.idiomas;
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error); // Manejo de errores
+    });
+</script>

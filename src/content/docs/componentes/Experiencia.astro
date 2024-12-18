@@ -1,0 +1,69 @@
+<div class="w-5/6 ml-[16.66%] min-h-full bg-gray-100">
+    <!-- Sección "Formacion" -->
+    <section id="experiencia" class="w-full py-5 bg-slate-100">
+        <div class="p-5 w-full h-full">
+            <h1 class="text-3xl md:text-4xl font-bold mb-10 text-left text-slate-600">Experiencia</h1>
+            <!-- Contenedor de cuadrícula -->
+            <div id="contenedor-experiencia" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 border-2 border-aquamarine-600 bg-white rounded-lg p-6">
+                <!-- Los bloques se agregarán dinámicamente aquí -->
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    fetch('src/datos/experiencia.json')
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Error al cargar el archivo JSON');
+            }
+            return response.json(); // Parsear el JSON
+        })
+        .then((data) => {
+            const contenedor = document.getElementById('contenedor-experiencia');
+
+            data.forEach((item: { 
+                titulo: string | null; 
+                empresa: string; 
+                periodo: string; 
+                responsabilidades: string[]; 
+            }) => {
+                // Crear el bloque
+                const bloque = document.createElement('div');
+                bloque.className = 'p-4 border border-gray-200 rounded-lg shadow';
+
+                // Crear el título
+                const titulo = document.createElement('h3');
+                titulo.className = 'text-xl font-bold text-gray-800';
+                titulo.textContent = item.titulo;
+
+                // Crear el periodo
+                const periodo = document.createElement('p');
+                periodo.className = 'text-gray-600 mt-1';
+                periodo.innerHTML = `<span class="font-medium">${item.empresa}</span><br>${item.periodo}`;
+
+                // Crear las responsabilidades
+                const responsabilidades = document.createElement('p');
+                responsabilidades.className = 'text-gray-600 mt-1';
+                item.responsabilidades.forEach((resp: string | null) => {
+                    const responsabilidad = document.createElement('span');
+                    responsabilidad.className = 'font-medium block';
+                    responsabilidad.textContent = resp;
+                    responsabilidades.appendChild(responsabilidad);
+                });
+
+                // Agregar los elementos al bloque
+                bloque.appendChild(titulo);
+                bloque.appendChild(periodo);
+                bloque.appendChild(responsabilidades);
+
+                // Agregar el bloque al contenedor
+                if(contenedor != null) {
+                    contenedor.appendChild(bloque);
+                }
+            });
+        })
+        .catch((error) => {
+            console.error('Error:', error); // Manejo de errores
+        });
+</script>

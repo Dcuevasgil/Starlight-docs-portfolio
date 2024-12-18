@@ -1,0 +1,134 @@
+---
+title: Referencias
+description: El componente **Referencias** presenta un conjunto de bloques con información sobre las personas que han trabajado con el desarrollador, destacando su nombre, empresa y cargo. Se muestra en una cuadrícula responsiva, adaptándose a diferentes tamaños de pantalla.
+---
+
+# Componente Referencias
+
+El **Componente Referencias** muestra un listado de referencias de personas con las que el desarrollador ha trabajado. Cada bloque de referencia incluye el nombre, la empresa y el cargo de la persona. El diseño está basado en una cuadrícula, adaptándose a pantallas de diferentes tamaños con un diseño limpio y moderno.
+
+---
+
+## Estructura General del Componente
+
+El componente **Referencias** está compuesto por un contenedor principal que contiene una sección de referencias en forma de una cuadrícula. Cada referencia está representada en un bloque con bordes y sombra, haciendo que se destaquen de manera visual.
+
+### Código del Componente
+
+```astro
+<div class="w-5/6 ml-[16.66%] min-h-full bg-gray-100">
+    <!-- Sección "Referencias" -->
+    <section id="referencias" class="w-full py-5 bg-slate-100">
+        <div class="p-5 w-full h-full">
+            <h1 class="text-3xl md:text-4xl font-bold mb-10 text-left text-slate-600">Referencias</h1>
+            <!-- Contenedor de cuadrícula -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 border-2 border-aquamarine-600 bg-white rounded-lg p-6">
+                
+                <!-- Bloque 1 -->
+                <div class="p-4 border border-gray-200 rounded-lg shadow">
+                    <h3 class="text-xl font-bold text-gray-800">Fernando Fernandez Lopez</h3>
+                    <p class="text-gray-600 mt-1">
+                        <span class="font-medium">Microsoft Corporation</span><br>
+                        Desarrollador Backend
+                    </p>
+                </div>
+                
+                <!-- Bloque 2 -->
+                <div class="p-4 border border-gray-200 rounded-lg shadow">
+                    <h3 class="text-xl font-bold text-gray-800">Ana Maria Fernandez Ponce</h3>
+                    <p class="text-gray-600 mt-1">
+                        <span class="font-medium">Banco Santander</span><br>
+                        Desarrolladora Front-end Senior
+                    </p>
+                </div>
+                
+                <!-- Bloque 3 -->
+                <div class="p-4 border border-gray-200 rounded-lg shadow">
+                    <h3 class="text-xl font-bold text-gray-800">Carmen Rodriguez Guzman</h3>
+                    <p class="text-gray-600 mt-1">
+                        <span class="font-medium">Google LLC</span><br>
+                        Project Manager
+                    </p>
+                </div>
+                
+                <!-- Bloque 4 -->
+                <div class="p-4 border border-gray-200 rounded-lg shadow">
+                    <h3 class="text-xl font-bold text-gray-800">Francisco Martinez Campos</h3>
+                    <p class="text-gray-600 mt-1">
+                        <span class="font-medium">Telefonica</span><br>
+                        Administrador de base de datos
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+```
+
+## Explicación de las Clases y Estilos
+
+### Contenedor Principal
+
+El contenedor principal de este componente tiene las siguientes clases:
+
+- **`w-5/6`**: El ancho del contenedor ocupa el 83.33% del contenedor padre.
+- **`ml-[16.66%]`**: Aplica un margen izquierdo del 16.66% para centrar el contenedor.
+- **`min-h-full`**: Establece una altura mínima igual a la altura del contenedor padre.
+- **`bg-gray-100`**: Aplica un fondo gris claro para diferenciar esta sección del resto de la página.
+
+## Sección de Referencias
+
+La sección que contiene las referencias tiene las siguientes clases:
+
+- **`w-full`**: Establece el ancho al 100%.
+- **`py-5`**: Aplica un espaciado vertical de 5 unidades.
+- **`bg-slate-100`**: Aplica un fondo gris claro.
+
+### Título
+
+El título de la sección tiene las siguientes clases:
+
+- **`text-3xl md:text-4xl`**: Define el tamaño del texto como 3xl en pantallas pequeñas y 4xl en pantallas medianas y grandes.
+- **`font-bold`**: Aplica un peso de fuente negrita.
+- **`mb-10`**: Aplica un margen inferior de 10 unidades.
+- **`text-left`**: Alinea el texto a la izquierda.
+- **`text-slate-600`**: Establece el color del texto en un tono gris oscuro.
+
+### Contenedor de Cuadrícula
+
+El contenedor de los bloques de referencia utiliza una cuadrícula con las siguientes clases:
+
+- **`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2`**: Define una cuadrícula de una columna en pantallas pequeñas y dos columnas en pantallas medianas y grandes.
+- **`gap-6`**: Aplica un espacio de 6 unidades entre los elementos de la cuadrícula.
+- **`border-2 border-aquamarine-600`**: Aplica un borde de 2 píxeles de grosor con un color azul verdoso.
+- **`bg-white`**: Aplica un fondo blanco.
+- **`rounded-lg`**: Aplica bordes redondeados.
+- **`p-6`**: Aplica un relleno de 6 unidades.
+
+### Bloques de Referencia
+
+Cada bloque de referencia tiene las siguientes clases:
+
+- **`p-4`**: Aplica un relleno de 4 unidades dentro del bloque.
+- **`border border-gray-200`**: Aplica un borde gris claro alrededor de cada bloque.
+- **`rounded-lg`**: Aplica bordes redondeados a los bloques.
+- **`shadow`**: Añade una sombra sutil a los bloques.
+
+### Texto de Referencia
+
+Cada bloque de referencia tiene las siguientes clases para los elementos de texto:
+
+- **`text-xl font-bold text-gray-800`**: Aplica un tamaño de texto extra grande, negrita, y color gris oscuro al nombre.
+- **`text-gray-600`**: Aplica un color gris medio al texto adicional.
+- **`mt-1`**: Aplica un margen superior de 1 unidad al párrafo.
+- **`font-medium`**: Aplica un peso de fuente medio al nombre de la empresa.
+
+---
+
+## Recursos Utilizados
+
+No se han utilizado imágenes ni recursos externos en este componente.
+
+## Conclusión
+
+El componente Referencias proporciona una forma visualmente atractiva de mostrar las referencias profesionales del desarrollador. Utilizando la cuadrícula responsiva de Tailwind CSS, se adapta a diferentes tamaños de pantalla y proporciona una presentación clara de cada referencia. El uso de bordes, sombras y colores suaves asegura que el contenido sea legible y estéticamente agradable.

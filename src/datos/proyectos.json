@@ -1,0 +1,56 @@
+[
+  {
+    "nombre": "Clon de X",
+    "descripcion": "Diseñado con estilo propio, inspirado en la funcionalidad principal de la plataforma. Este proyecto incluye un feed de publicaciones y un sistema de interacción básico. Es una representación personalizada del concepto original",
+    "fechaInicio": "2024-10-07",
+    "fechaFin": "2024-11-04",
+    "url_repositorio": "https://github.com/Dcuevasgil/Proyecto_Twitter",
+    "url_demo": "http://localhost:3000/index.php",
+    "imagen": "../../public/Caratula_X.JPG",
+    "estado_proyecto": "Finalizado",
+    "tecnologias": [
+      { 
+        "nombre_tecnologia": "HTML", 
+        "url_aprendizaje": "https://developer.mozilla.org/es/docs/Web/HTML",
+        "icono": "../../public/HTMLogo.svg" 
+      },
+      { 
+        "nombre_tecnologia": "CSS", 
+        "url_aprendizaje": "https://developer.mozilla.org/es/docs/Web/CSS",
+        "icono": "../../public/CSSLogo.svg" 
+      },
+      { 
+        "nombre_tecnologia": "PHP", 
+        "url_aprendizaje": "https://developer.mozilla.org/es/docs/Glossary/PHP",
+        "icono": "../../public/php_logo.png" 
+      }
+    ]
+  },
+  {
+    "nombre": "Portfolio",
+    "descripcion": "Página web creada en Astro con un estudio previo de diseño web, generando la documentacion con Figma",
+    "fechaInicio": "2024-11-12",
+    "fechaFin": "2024-12-02",
+    "url_repositorio": "",
+    "url_demo": "http://http://localhost:4321/",
+    "imagen": "../../public/portfolio.JPG",
+    "estado_proyecto": "Finalizado",
+    "tecnologias": [
+      { 
+        "nombre_tecnologia": "Astro", 
+        "url_aprendizaje": "https://docs.astro.build/en/getting-started/",
+        "icono": "../../public/AstroLogo.svg" 
+      },
+      { 
+        "nombre_tecnologia": "Tailwind CSS", 
+        "url_aprendizaje": "https://tailwindcss.com/docs/installation",
+        "icono": "../../public/TailwindLogo.svg" 
+      },
+      { 
+        "nombre_tecnologia": "Figma", 
+        "url_aprendizaje": "https://www.figma.com/" ,
+        "icono": "../../public/FigmaLogo.svg"
+      }
+    ]
+  }
+]

@@ -1,0 +1,65 @@
+<div class="w-5/6 ml-[16.66%] min-h-full bg-gray-100">
+    <!-- Sección "Habilidades" -->
+    <section id="habilidades" class="w-full py-5 bg-slate-100">
+      <div class="p-5 w-full h-full">
+        <h1 class="text-3xl md:text-4xl font-bold mb-10 text-left text-slate-600">Habilidades</h1>
+        <!-- Contenedor de cuadrícula dividido en dos columnas -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 border-2 border-aquamarine-600 bg-white rounded-lg p-6">
+          <ul class="space-y-4 p-4">
+            <!-- Primera columna de habilidades -->
+            {[
+              { image: "../../../assets/svg/AstroLogo.svg", name: "Astro", level: 3 },
+              { image: "../../../assets/svg/CSSLogo.svg", name: "CSS", level: 5 },
+              { image: "../../../assets/svg/FigmaLogo.svg", name: "Figma", level: 4 },
+              { image: "../../../assets/svg/HTMLogo.svg", name: "HTML", level: 5 },
+              { image: "../../../assets/svg/JavaLogo.svg", name: "Java", level: 4 },
+              { image: "../../../assets/svg/JavaScriptLogo.svg", name: "JavaScript", level: 3 }
+            ].map(({ image, name, level }) => (
+              <li class="flex items-center">
+                {image && (
+                  <img src={image} alt={`${name} logo`} class="w-6 h-6 mr-2" />
+                )}
+                <span class="w-20">{name}</span>
+                <div class="flex space-x-1">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <div
+                      class={`w-4 h-4 rounded-full ${
+                        i < level ? "bg-green-500" : "bg-gray-300"
+                      }`}
+                    ></div>
+                  ))}
+                </div>
+              </li>
+            ))}
+          </ul>
+          <ul class="space-y-4 p-4">
+            <!-- Segunda columna de habilidades -->
+            {[
+              { image: "../../../assets/svg/php_logo.png", name: "PHP", level: 3 },
+              { image: "../../../assets/svg/PythonLogo.svg", name: "Python", level: 4 },
+              { image: "../../../assets/svg/ReactLogo.svg", name: "React", level: 3 },
+              { image: "../../../assets/svg/SQLogo.svg", name: "SQL", level: 4 },
+              { image: "../../../assets/svg/SpringLogo.svg", name: "Spring", level: 4 },
+              { image: "../../../assets/svg/TailwindLogo.svg", name: "Tailwind", level: 3 }
+            ].map(({ image, name, level }) => (
+              <li class="flex items-center">
+                {image && (
+                  <img src={image} alt={`${name} logo`} class="w-6 h-6 mr-2" />
+                )}
+                <span class="w-20">{name}</span>
+                <div class="flex space-x-1">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <div
+                      class={`w-4 h-4 rounded-full ${
+                        i < level ? "bg-green-500" : "bg-gray-300"
+                      }`}
+                    ></div>
+                  ))}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>  
+</div>

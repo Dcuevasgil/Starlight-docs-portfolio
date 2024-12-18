@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- Rectangulo Fondo -->
+  <rect width="120" height="120" rx="16" ry="16" fill="#f0f0f0"/>
+  
+  <!-- Marco circular -->
+  <circle cx="60" cy="60" r="50" fill="none" stroke="#ccc" stroke-width="8"/>
+
+  <!-- Círculo interno -->
+  <circle cx="60" cy="60" r="35" fill="#1e90ff" />
+
+  <!-- Signo de interrogación -->
+  <path d="M60 40c-5.5 0-10 4.5-10 10h8c0-1.1.9-2 2-2s2 .9 2 2c0 1.6-1.4 2.8-2.6 3.9-1.9 1.7-4.4 3.9-4.4 7.1v1h8v-1c0-1.6 1.4-2.8 2.6-3.9 1.9-1.7 4.4-3.9 4.4-7.1 0-5.5-4.5-10-10-10zm-2 38h4v8h-4z" fill="#fff"/>
+</svg>

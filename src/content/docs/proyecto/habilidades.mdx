@@ -1,0 +1,116 @@
+---
+title: Habilidades
+description: Explicación detallada del componente "Habilidades", incluyendo clases, estilos y recursos utilizados en su diseño e implementación.
+---
+
+# Componente Habilidades
+
+El **Componente Habilidades** muestra una lista de tecnologías y herramientas que maneja el desarrollador. La interfaz incluye logotipos y niveles de habilidad representados con círculos de colores. En este documento se detalla la estructura, clases y recursos empleados para su creación.
+
+---
+
+## Estructura General del Componente
+
+El **Componente Habilidades** está compuesto por un contenedor `<div>` que envuelve toda la sección "Habilidades", que incluye un título, una cuadrícula de habilidades dividida en dos columnas y los logotipos de las tecnologías con barras de nivel de habilidad.
+
+### Código del Componente
+
+```astro
+import habilidadesData from '../../../datos/habilidades.json'
+
+<div class="w-5/6 ml-[16.66%] min-h-full bg-gray-100">
+    <section id="habilidades" class="w-full py-5 bg-slate-100">
+        <div class="p-5 w-full h-full">
+            <h1 class="text-3xl md:text-4xl font-bold mb-10 text-left text-slate-600">Habilidades</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 border-2 border-aquamarine-600 bg-white rounded-lg p-6">
+                <ul class="space-y-4 p-4">
+                    {habilidadesData.habilidades.map(({ tecnologia, nivel }) => (
+                        <li class="flex items-center">
+                            <img src={`../../../assets/svg/${tecnologia}Logo.svg`} alt={`${tecnologia} logo`} class="w-6 h-6 mr-2" />
+                            <span class="w-20">{tecnologia}</span>
+                            <div class="flex space-x-1">
+                                {Array.from({ length: 5 }).map((_, i) => (
+                                    <div
+                                        class={`w-4 h-4 rounded-full ${
+                                            i < nivel ? "bg-green-500" : "bg-gray-300"
+                                        }`}
+                                    ></div>
+                                ))}
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+
+---
+
+## Explicación de las Clases y Estilos
+
+### Contenedor Principal
+
+El contenedor principal de este componente tiene las siguientes clases:
+
+- **`w-5/6`**: El ancho del contenedor ocupa el 83.33% del contenedor padre.
+- **`ml-[16.66%]`**: Aplica un margen izquierdo del 16.66% para centrar el contenedor.
+- **`min-h-full`**: Establece una altura mínima igual a la altura del contenedor padre.
+- **`bg-gray-100`**: Aplica un fondo gris claro para diferenciar esta sección del resto de la página.
+
+### Sección "Habilidades"
+
+La sección "Habilidades" tiene las siguientes clases:
+
+- **`w-full`**: Ocupa todo el ancho disponible del contenedor.
+- **`py-5`**: Aplica un padding vertical de 5 unidades para espaciar el contenido.
+- **`bg-slate-100`**: Aplica un fondo gris claro para la sección.
+  
+### Contenedor de Cuadrícula
+
+Este contenedor tiene las siguientes clases:
+
+- **`grid grid-cols-1 md:grid-cols-2`**: Crea una cuadrícula con una columna en pantallas pequeñas y dos columnas en pantallas medianas o grandes.
+- **`gap-6`**: Aplica un espacio entre los elementos de la cuadrícula.
+- **`border-2 border-aquamarine-600`**: Aplica un borde de 2 píxeles y color aquamarine alrededor de la cuadrícula.
+- **`bg-white`**: Aplica un fondo blanco para la cuadrícula.
+- **`rounded-lg`**: Aplica bordes redondeados a la cuadrícula.
+- **`p-6`**: Aplica un padding de 6 unidades al contenedor.
+
+### Listas de Habilidades
+
+Cada lista tiene las siguientes clases:
+
+- **`space-y-4`**: Aplica un espacio vertical entre los elementos de la lista.
+- **`p-4`**: Aplica un padding de 4 unidades a las listas.
+  
+Dentro de cada lista para cada habilidad, se utilizan las siguientes clases:
+
+- **`flex items-center`**: Aplica un layout flex para alinear los elementos (logotipo y nombre) horizontalmente y centrarlos verticalmente.
+- **`w-6 h-6 mr-2`**: Define el tamaño de los logotipos (iconos) a 6x6 unidades y les aplica un margen derecho de 2 unidades.
+- **`w-20`**: Define un ancho fijo de 20 unidades para el nombre de la habilidad.
+  
+### Indicadores de Nivel
+
+Cada habilidad tiene un sistema de indicadores representados por círculos:
+
+- **`w-4 h-4 rounded-full`**: Define el tamaño de cada círculo como 4x4 unidades y los bordes redondeados para que se vean como círculos.
+- **`bg-green-500`**: Aplica un fondo verde a los círculos que representan el nivel alcanzado.
+- **`bg-gray-300`**: Aplica un fondo gris claro a los círculos que no representan el nivel alcanzado.
+
+---
+
+## Recursos Utilizados
+
+- **Logos de las tecnologías**: Cada habilidad tiene su propio logotipo representado por un archivo SVG o PNG.
+  - Ejemplos de logos:
+    - **`AstroLogo.svg`**: Logotipo de Astro.
+    - **`CSSLogo.svg`**: Logotipo de CSS.
+    - **`FigmaLogo.svg`**: Logotipo de Figma.
+    - Otros logos incluyen **Java**, **JavaScript**, **PHP**, **Python**, **React**, **SQL**, **Spring**, **Tailwind**, entre otros.
+
+---
+
+## Conclusión
+
+El componente **Habilidades** proporciona una forma visualmente atractiva y clara de mostrar las tecnologías y herramientas que el desarrollador maneja. Utilizando **Tailwind CSS**, se logra un diseño modular y responsivo que se adapta a dispositivos de diferentes tamaños. Además, los indicadores de nivel permiten una fácil interpretación de la experiencia con cada tecnología.

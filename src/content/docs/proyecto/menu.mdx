@@ -1,0 +1,166 @@
+---
+title: Menú Lateral
+description: Explicación detallada del componente Menú Lateral, incluyendo clases, estilos y recursos utilizados en su diseño e implementación.
+---
+
+# Componente Menú Lateral
+
+El **Menú Lateral** es una sección fija que ocupa el 1/6 del ancho de la pantalla y se muestra en el lado izquierdo del sitio web. Contiene enlaces a las diferentes secciones del portafolio, como "Sobre mí", "Habilidades", "Experiencia", entre otros. En este documento se detalla la estructura, clases y recursos empleados para su creación.
+
+---
+
+## Estructura General del Componente
+
+El **Menú Lateral** está compuesto por un contenedor `<aside>` que envuelve todos los elementos del menú, incluidos los enlaces y la imagen de perfil.
+
+### Código del Componente
+
+import Menu from '../componentes/Menu.astro'
+
+```HTML
+<Menu>
+    <aside class="fixed top-0 left-0 h-full w-1/6 bg-gray-800 text-white flex flex-col items-center justify-start pt-3 border-r-4 border-white">
+        <img
+        src="../../../assets/images/Carnet_Dcg.jpg"
+        alt="David Cuevas Gil"
+        class="w-8 h-16 md:w-40 md:h-40 rounded-full border-2 border-white object-cover mt-3 mb-3"
+        />
+        <h3 class="text-2xl font-semibold mb-3">David Cuevas</h3>
+        <hr class="border border-slate-600 w-full mb-6"></hr>
+        <div  class="bg-slate-100 w-3/4 rounded-full mb-3" style="padding: 2px;">
+            <a href="#sobre-mi">
+                <div class="relative bg-slate-600 rounded-full flex">
+                    <div class="hover:bg-slate-500 w-full rounded-full">
+                        <div class="bg-slate-600 rounded-full flex items-center justify-between">
+                            <p class="text-gray-400 pl-3 py-2 pr-3 flex justify-center font-semibold hover:underline hover:bg-[#475569] hover:rounded-full hover:text-white">Sobre mí</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="bg-slate-100 w-3/4 rounded-full mb-3" style="padding: 2px;">
+            <a href="#habilidades">
+                <div  class="relative bg-slate-600 rounded-full flex">
+                    <div class="hover:bg-slate-500 w-full rounded-full">
+                        <div class="bg-slate-600 rounded-full flex items-center justify-between">
+                            <p class="text-gray-400 pl-3 py-2 pr-3 flex justify-center font-semibold hover:underline hover:bg-[#475569] hover:rounded-full hover:text-white">Habilidades</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div  class="bg-slate-100 w-3/4 rounded-full mb-3" style="padding: 2px;">
+            <a href="#experiencia">
+                <div  class="relative bg-slate-600 rounded-full flex">
+                    <div class="hover:bg-slate-500 w-full rounded-full">
+                        <div class="bg-slate-600 rounded-full flex items-center justify-between">
+                            <p class="text-gray-400 pl-3 py-2 pr-3 flex justify-center font-semibold hover:underline hover:bg-[#475569] hover:rounded-full hover:text-white">Experiencia</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="bg-slate-100 w-3/4 rounded-full mb-3" style="padding: 2px;">
+            <a href="#proyectos">
+                <div  class="relative bg-slate-600 rounded-full flex">
+                    <div class="hover:bg-slate-500 w-full rounded-full">
+                        <div class="bg-slate-600 rounded-full flex items-center justify-between">
+                            <p class="text-gray-400 pl-3 py-2 pr-3 flex justify-center font-semibold hover:underline hover:bg-[#475569] hover:rounded-full hover:text-white">Proyectos</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div  class="bg-slate-100 w-3/4 rounded-full mb-3" style="padding: 2px;">
+            <a href="#formacion">
+                <div  class="relative bg-slate-600 rounded-full flex">
+                    <div class="hover:bg-slate-500 w-full rounded-full">
+                        <div class="bg-slate-600 rounded-full flex items-center justify-between">
+                            <p class="text-gray-400 pl-3 py-2 pr-3 flex justify-center font-semibold hover:underline hover:bg-[#475569] hover:rounded-full hover:text-white">Formacion</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div  class="bg-slate-100 w-3/4 rounded-full mb-3" style="padding: 2px;">
+            <a href="#referencias">
+                <div  class="relative bg-slate-600 rounded-full flex">
+                    <div class="hover:bg-slate-500 w-full rounded-full">
+                        <div class="bg-slate-600 rounded-full flex items-center justify-between">
+                            <p class="text-gray-400 pl-3 py-2 pr-3 flex justify-center font-semibold hover:underline hover:bg-[#475569] hover:rounded-full hover:text-white">Referencias</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div  class="bg-slate-100 w-3/4 rounded-full mb-3" style="padding: 2px;">
+            <a href="#contacto">
+                <div  class="relative bg-slate-600 rounded-full flex">
+                    <div class="hover:bg-slate-500 w-full rounded-full">
+                        <div class="bg-slate-600 rounded-full flex items-center justify-between">
+                            <p class="text-gray-400 pl-3 py-2 pr-3 flex justify-center font-semibold hover:underline hover:bg-[#475569] hover:rounded-full hover:text-white">Contacto</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </aside>
+</Menu>
+```
+---
+
+## Explicación de las Clases y Estilos
+
+### Contenedor Principal
+
+El contenedor principal de este componente tiene las siguientes clases:
+
+- **`fixed`**: Hace que el menú se quede fijo en la pantalla, incluso cuando se haga scroll.
+- **`top-0 left-0`**: Coloca el menú en la esquina superior izquierda de la pantalla.
+- **`h-full`**: Establece la altura del menú para que ocupe toda la altura de la pantalla.
+- **`w-1/6`**: Define que el menú ocupará un sexto del ancho de la pantalla.
+- **`bg-gray-800`**: Aplica un fondo gris oscuro.
+- **`text-white`**: Establece el color del texto en blanco.
+- **`flex flex-col`**: Organiza los elementos dentro del menú en una columna, alineados verticalmente.
+- **`items-center justify-start`**: Centra los elementos horizontalmente y los alinea al principio verticalmente.
+- **`pt-3`**: Añade un pequeño espacio en la parte superior del menú.
+- **`border-r-4 border-white`**: Aplica un borde blanco de 4 píxeles a la derecha del menú.
+
+### Imagen de Perfil 
+
+La imagen de perfil en el menú tiene las siguientes clases:
+
+- **`w-8 h-16 md:w-40 md:h-40`**: Define el tamaño de la imagen en dispositivos pequeños y grandes.
+- **`rounded-full`**: Hace que la imagen sea redonda.
+- **`border-2 border-white`**: Aplica un borde blanco alrededor de la imagen.
+- **`object-cover`**: Asegura que la imagen se recorte de manera adecuada para cubrir el área de la imagen redonda.
+
+### Enlaces
+
+Cada enlace en el menú tiene una estructura similar, con clases para el diseño y la interactividad:
+
+- **`bg-slate-100`**: Fondo gris claro para cada contenedor de enlace.
+- **`w-3/4`**: Ancho del 75% del contenedor padre.
+- **`rounded-full`**: Hace que los enlaces tengan bordes redondeados.
+- **`mb-3`**: Aplica un margen inferior de 3 unidades.
+- **`hover:bg-slate-500`**: Cambia el color de fondo cuando el usuario pasa el ratón por encima.
+- **`hover:underline`**: Añade subrayado al pasar el ratón por encima del enlace.
+- **`text-gray-400`**: Define el color del texto como gris claro por defecto.
+- **`font-semibold`**: Aplica un peso de fuente seminegrita.
+
+---
+
+## Recursos Utilizados
+
+### Imagen de Perfil
+
+- **Nombre**: `Carnet_Dcg.jpg`
+- **Ubicación**: `/public/Carnet_Dcg.jpg`
+- **Formato**: JPG
+- **Descripción**: Esta imagen se utiliza como foto de perfil del desarrollador en el menú lateral.
+
+---
+
+## Conclusión
+
+El componente **Menú Lateral** proporciona una interfaz de navegación clara y accesible. Las clases de **Tailwind CSS** permiten un diseño responsivo y modular, que se adapta tanto a pantallas pequeñas como grandes, proporcionando una experiencia de usuario óptima. El diseño adaptativo asegura que el menú sea accesible en dispositivos de diferentes tamaños de pantalla, garantizando una buena experiencia en móviles y escritorios.

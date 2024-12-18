@@ -1,0 +1,316 @@
+---
+title: Componente Contacto
+description: El componente **Contacto** ofrece una interfaz para que los usuarios puedan comunicarse. Incluye información de contacto como teléfono, dirección, correo electrónico, enlaces a redes sociales y un formulario de contacto para enviar mensajes. El diseño es adaptable y permite a los usuarios interactuar de manera sencilla.
+---
+
+# Componente Contacto
+
+El **Componente Contacto** es una sección interactiva dentro del sitio web que proporciona diversas formas de contacto, como teléfono, correo electrónico, dirección y redes sociales. Además, incluye un formulario donde los usuarios pueden enviar mensajes directamente desde el sitio. En este documento se detalla la estructura, las clases de Tailwind CSS utilizadas y los recursos empleados en la creación de este componente.
+
+---
+
+## Estructura General del Componente
+
+El **Componente Contacto** está compuesto por varias secciones dentro de un contenedor principal. Cada sección está estructurada para ofrecer una experiencia de usuario clara y eficiente.
+
+### Código del Componente
+
+```astro
+<div class="w-5/6 ml-[16.66%] min-h-full bg-gray-100">
+    <!-- Sección "Contacto" -->
+    <section id="contacto" class="w-full py-5 bg-slate-100">
+        <div class="p-5 w-full h-full overflow-auto">
+            <h1 class="text-3xl md:text-4xl font-bold mb-10 text-left text-slate-600">Contacto</h1>
+            <!-- Contenedor con borde negro -->
+            <div class="border-2 border-aquamarine-600 bg-white rounded-lg p-8">
+              <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Información de contacto -->
+                <div class="text-lg text-gray-800 flex flex-col space-y-5">
+                  <div class="flex flex-row gap-3 justify-start items-center">
+                    <img src="../../../assets/svg/telefono.svg" alt="" width="30">
+                    <p>Tel: 622 01 79 56</p>
+                  </div>
+                  <div class="flex flex-row gap-3 justify-start items-center">
+                    <img src="../../../assets/svg/UbicacionLogo.svg" alt="" width="30">
+                    <p>SEVILLA, ESPAÑA</p>
+                  </div>
+                  <div class="flex flex-row gap-3 justify-start items-center">
+                    <img src="../../../assets/svg/email.svg" alt="" width="30">
+                    <p>dcuevasgil@gmail.com</p>
+                  </div>
+                  <a href="../../public/Portafolio - Dcg.pdf" class="text-blue-600 hover:underline mb-4 flex flex-row gap-3 justify-start items-center" target="_blank">
+                    <img src="../../../assets/svg/Logo_pdf.svg" alt="" width="40"> Mi Portfolio
+                  </a>
+                  <div class="mb-4">
+                    <h3 class="font-semibold">MIS REDES SOCIALES</h3>
+                    <div class="flex space-x-4">
+                      <a href="https://github.com/Dcuevasgil" class="text-black w-10 h-10 hover:text-gray-600" target="_blank">
+                        <img src="../../../assets/images/github.png" alt="">
+                      </a>
+                      <a href="https://www.linkedin.com/in/david-cuevas-gil-36a728309/" class="text-blue-600 w-10 h-10 hover:text-blue-500" target="_blank">
+                        <img src="../../../assets/svg/linkedin.svg" alt="">
+                      </a>
+                      <a href="https://x.com/D_cuevasgil" class="text-blue-400 w-10 h-10 hover:text-blue-300" target="_blank">
+                        <img src="../../../assets/images/Twitter.jpg" alt="">
+                      </a>
+                      <a href="https://www.instagram.com/d_cuevasgil/" class="text-pink-600 w-10 h-10 hover:text-pink-500" target="_blank">
+                        <img src="../../../assets/svg/InstagramLogo.svg" alt="">
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                  <!-- Formulario de contacto -->
+                  <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">Contáctame</h3>
+                    <form>
+                      <div class="mb-4">
+                        <label for="nombre" class="block text-gray-700">Nombre</label>
+                        <input
+                          type="text"
+                          id="nombre"
+                          name="nombre"
+                          class="w-full p-2 border border-gray-300 rounded-md"
+                          placeholder="Nombre"
+                        />
+                      </div>
+                      <div class="mb-4">
+                        <label for="email" class="block text-gray-700">Mail</label>
+                        <input
+                          type="email"
+                          id="email"
+                          name="email"
+                          class="w-full p-2 border border-gray-300 rounded-md"
+                          placeholder="Mail"
+                        />
+                      </div>
+                      <div class="mb-4">
+                        <label for="telefono" class="block text-gray-700">Teléfono</label>
+                        <input
+                          type="text"
+                          id="telefono"
+                          name="telefono"
+                          class="w-full p-2 border border-gray-300 rounded-md"
+                          placeholder="Teléfono"
+                        />
+                      </div>
+                      <div class="mb-4">
+                        <label for="mensaje" class="block text-gray-700">Mensaje</label>
+                        <textarea
+                          id="mensaje"
+                          name="mensaje"
+                          class="w-full p-2 border border-gray-300 rounded-md"
+                          rows="4"
+                          placeholder="Mensaje"
+                        ></textarea>
+                      </div>
+                      <button
+                        type="submit"
+                        class="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-[#1947AC] hover:underline hover:text-white"
+                      >
+                        Enviar
+                      </button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+  </section>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Referencias a los elementos del formulario
+        const nombreInput = document.querySelector("#nombre");
+        const emailInput = document.querySelector("#email");
+        const telefonoInput = document.querySelector("#telefono");
+        const mensajeInput = document.querySelector("#mensaje");
+        const enviarButton = document.querySelector("button[type='submit']");
+
+        // Contenedores para mensajes de error
+        const nombreError = document.createElement("p");
+        const emailError = document.createElement("p");
+        const telefonoError = document.createElement("p");
+        const mensajeError = document.createElement("p");
+
+        // Añadir contenedores de error después de cada campo con validación
+        if (nombreInput?.parentNode) {
+            nombreInput.parentNode.appendChild(nombreError);
+        } else {
+            console.error("El nodo padre de 'nombreInput' no existe.");
+        }
+
+        if (emailInput?.parentNode) {
+            emailInput.parentNode.appendChild(emailError);
+        } else {
+            console.error("El nodo padre de 'emailInput' no existe.");
+        }
+
+        if (telefonoInput?.parentNode) {
+            telefonoInput.parentNode.appendChild(telefonoError);
+        } else {
+            console.error("El nodo padre de 'telefonoInput' no existe.");
+        }
+
+        if (mensajeInput?.parentNode) {
+            mensajeInput.parentNode.appendChild(mensajeError);
+        } else {
+            console.error("El nodo padre de 'mensajeInput' no existe.");
+        }  
+
+        // Aplicar estilos a los mensajes de error
+        [nombreError, emailError, telefonoError, mensajeError].forEach((error) => {
+            error.classList.add("text-red-500", "text-sm", "mt-1");
+        });
+
+        // Función para validar nombre
+        function validarNombre(nombre: string) {
+            const regex = /^[A-Z][a-z]+(?:\s[A-Z][a-z]+)*$/;
+            return regex.test(nombre.trim());
+        }
+
+        // Función para validar email
+        function validarEmail(email: string) {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email.trim());
+        }
+
+        // Función para validar teléfono
+        function validarTelefono(telefono: string) {
+            const regex = /^\d+$/; // Solo números
+            return regex.test(telefono.trim());
+        }
+
+        // Función para validar mensaje
+        function validarMensaje(mensaje: { 
+            trim: () => {
+                (): any;
+                new(): any;
+                length: number;
+            };
+        }) {
+            return mensaje.trim().length >= 20;
+        }
+
+        // Función para actualizar mensajes de error
+        function actualizarMensajeError(campo: Element, esValido: boolean, mensajeError: HTMLParagraphElement, mensaje: string) {
+            if (esValido) {
+                mensajeError.textContent = ""; // Limpiar mensaje de error
+                campo.classList.remove("border-red-500");
+                campo.classList.add("border-gray-300");
+            } else {
+                mensajeError.textContent = mensaje; // Mostrar mensaje de error
+                campo.classList.add("border-red-500");
+                campo.classList.remove("border-gray-300");
+            }
+        }
+
+        // Función para actualizar el estado del botón "Enviar"
+        function actualizarEstadoBoton() {
+            const nombreValido = (nombreInput instanceof HTMLInputElement && nombreInput.value) ? validarNombre(nombreInput.value) : false;
+            const emailValido = (emailInput instanceof HTMLInputElement && emailInput.value) ? validarEmail(emailInput.value) : false;
+            const telefonoValido = (telefonoInput instanceof HTMLInputElement && telefonoInput.value) ? validarTelefono(telefonoInput.value) : false;
+            const mensajeValido = (mensajeInput instanceof HTMLTextAreaElement && mensajeInput.value) ? validarMensaje(mensajeInput.value) : false;
+
+            // Función para validar mensaje
+            function validarMensaje(mensaje: string) {
+                return mensaje.trim().length >= 20;
+            }
+
+            // Actualizar mensajes de error para cada campo
+            if (nombreInput) {
+                actualizarMensajeError(nombreInput, nombreValido, nombreError, "El nombre debe comenzar con mayúscula y el resto en minúsculas.");
+            }
+            if (emailInput) {
+                actualizarMensajeError(emailInput, emailValido, emailError, "Introduce un correo electrónico válido.");
+            }
+            if (telefonoInput) {
+                actualizarMensajeError(telefonoInput, telefonoValido, telefonoError, "El teléfono debe contener solo números.");
+            }
+            if (mensajeInput) {
+                actualizarMensajeError(mensajeInput, mensajeValido, mensajeError, "El mensaje debe tener al menos 20 caracteres.");
+            }
+
+            // Habilitar/deshabilitar el botón según las validaciones
+            if (enviarButton instanceof HTMLButtonElement) {
+                enviarButton.disabled = !(nombreValido && emailValido && telefonoValido && mensajeValido);
+            } else {
+                console.error("El botón de enviar no está definido o no es un botón.");
+            }
+        }
+
+        // Eventos de entrada para validar campos mientras se escribe
+        if (nombreInput) {
+            nombreInput.addEventListener("input", actualizarEstadoBoton);
+        }
+
+        if (emailInput) {
+            emailInput.addEventListener("input", actualizarEstadoBoton);
+        }
+
+        if (telefonoInput) {
+            telefonoInput.addEventListener("input", actualizarEstadoBoton);
+        }
+
+        if (mensajeInput) {
+            mensajeInput.addEventListener("input", actualizarEstadoBoton);
+        }
+
+        // Desactivar el envío del formulario si hay campos no válidos
+        const formElement = document.querySelector("form");
+
+        if (formElement && enviarButton instanceof HTMLButtonElement) {
+        formElement.addEventListener("submit", (e) => {
+            if (enviarButton.disabled) { 
+            e.preventDefault(); 
+            alert("Corrige los errores antes de enviar el formulario.");
+            }
+        });
+        }
+
+        // Actualizar el estado del botón al cargar la página
+        actualizarEstadoBoton();
+    });
+</script>
+```
+
+---
+
+## Explicación de las Clases y Estilos
+
+### Contenedor Principal
+- **w-5/6 ml-[16.66%] min-h-full bg-gray-100**: Define el contenedor principal con un ancho del 83.33% de la pantalla, un margen izquierdo para centrarlo, y un fondo gris claro.
+
+### Sección Contacto
+- **w-full py-5 bg-slate-100**: Define un contenedor de ancho completo con relleno en el eje vertical y un fondo gris claro.
+  
+### Información de Contacto
+- Las clases dentro de las filas de contacto como `flex`, `gap-3`, `justify-start`, y `items-center` permiten un diseño flexible y alineado de los elementos.
+
+### Formulario
+- El formulario usa clases como `w-full`, `p-2`, `border`, `border-gray-300`, `rounded-md` para crear inputs estilizados con un diseño consistente.
+
+---
+
+## Recursos Utilizados
+
+- **Imagen de Teléfono**  
+  Ubicación: `/assets/svg/telefono.svg`  
+  Descripción: Icono de teléfono en el componente de contacto.
+
+- **Imagen de Ubicación**  
+  Ubicación: `/assets/svg/UbicacionLogo.svg`  
+  Descripción: Icono de ubicación en el componente de contacto.
+
+- **Imagen de Correo Electrónico**  
+  Ubicación: `/assets/svg/email.svg`  
+  Descripción: Icono de correo electrónico en el componente de contacto.
+
+- **Iconos de Redes Sociales**  
+  Descripción: Se utilizan iconos de GitHub, LinkedIn, Twitter e Instagram.
+
+---
+
+## Conclusión
+
+El componente **Contacto** ofrece una forma clara y accesible para que los usuarios se comuniquen con el propietario del sitio web. Utilizando clases de Tailwind CSS, el diseño es flexible y adaptativo, lo que asegura una excelente experiencia tanto en dispositivos móviles como en pantallas de escritorio.

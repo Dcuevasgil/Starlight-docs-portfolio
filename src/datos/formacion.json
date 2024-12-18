@@ -1,0 +1,28 @@
+{
+  "estudios": [
+    {
+      "titulo": "Técnico Superior en Desarrollo de Aplicaciones Web",
+      "imagen": "../../public/Logo_pdf.svg",
+      "fechaRealizacion": "2023/2025",
+      "lugarOCertificadoPor": "Escuela Profesional Vedruna Sevilla"
+    },
+    {
+      "titulo": "Iniciación a la programación en Python",
+      "imagen": "../../public/Logo_pdf.svg",
+      "fecha_Realizacion": "",
+      "lugarOCertificadoPor": "IBM SkillBuild"
+    },
+    {
+      "titulo": "Curso de SQL",
+      "imagen": "../../public/Logo_pdf.svg",
+      "fechaRealizacion": "",
+      "lugarOCertificadoPor": "IBM SkillBuild"
+    },
+    {
+      "titulo": "Curso de Microsoft Power BI",
+      "imagen": "../../public/Logo_pdf.svg",
+      "fechaRealizacion": "",
+      "lugarOCertificadoPor": "IBM SkillBuild"
+    }
+  ]
+}

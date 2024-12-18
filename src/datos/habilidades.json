@@ -1,0 +1,52 @@
+{
+  "habilidades": [
+    {
+      "tecnologia": "Astro",
+      "nivel": 2
+    },
+    {
+      "tecnologia": "CSS",
+      "nivel": 5
+    },
+    {
+      "tecnologia": "Figma",
+      "nivel": 4
+    },
+    {
+      "tecnologia": "HTML",
+      "nivel": 5
+    },
+    {
+      "tecnologia": "Java",
+      "nivel": 4
+    },
+    {
+      "tecnologia": "JavaScript",
+      "nivel": 3
+    },
+    {
+      "tecnologia": "PHP",
+      "nivel": 3
+    },
+    {
+      "tecnologia": "Python",
+      "nivel": 4
+    },
+    {
+      "tecnologia": "React",
+      "nivel": 3
+    },
+    {
+      "tecnologia": "SQL",
+      "nivel": 4
+    },
+    {
+      "tecnologia": "Spring",
+      "nivel": 4
+    },
+    {
+      "tecnologia": "Tailwind",
+      "nivel": 3
+    }
+  ]
+}

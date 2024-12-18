@@ -1,0 +1,113 @@
+---
+title: Cabecera del Proyecto
+description: Explicación detallada del componente Header, incluyendo clases, estilos y recursos utilizados en su diseño e implementación.
+---
+
+# Componente Header
+
+El **Header** del proyecto es una sección visual clave que establece el tono del sitio web y presenta la información principal del desarrollador. En este documento, se detalla la estructura, clases y recursos empleados para su creación.
+
+---
+
+## Estructura General del Componente
+
+El **Header** está compuesto por un contenedor principal `<div>` que envuelve toda la sección y un elemento `<header>` que contiene el contenido visual y textual.
+
+### Código del Componente
+
+import Header from '../componentes/Header.astro'
+
+```HTML
+<Header>
+    <div class="w-5/6 ml-[16.66%] min-h-full bg-gray-100">
+        <header class="flex items-center justify-center w-full h-[274px] bg-white shadow-md bg-[url('../../public/cabecera_2.png')] bg-cover bg-center">
+            <div class="flex flex-col justify-center items-center text-center">
+                <h1 class="text-4xl md:text-7xl text-white drop-shadow-[0_7px_0.15px_rgba(0,0,0,1)] uppercase">
+                    David <span class="text-white shadow-black font-bold">Cuevas Gil</span>
+                </h1>
+                <p class="text-2xl md:text-5xl mt-6 shadow-black font-bold text-white drop-shadow-[0_7px_0.15px_rgba(0,0,0,1)]">
+                    Desarrollador Web
+                </p>
+            </div>
+        </header>
+    </div>
+</Header>
+```
+
+## Explicación de las Clases y Estilos
+
+### Contenedor Principal de la cabecera
+
+El contenedor principal sirve como envoltorio de la sección Header y aplica los siguientes estilos:
+
+- **`w-5/6`:** El ancho ocupa el 83.33% del contenedor padre.
+- **`ml-[16.66%]`:** Margen izquierdo del 16.66% para centrarlo horizontalmente.
+- **`min-h-full`:** Establece una altura mínima igual a la altura del contenedor padre.
+- **`bg-gray-100`:** Aplica un fondo gris claro para diferenciar esta sección del resto.
+
+### Cabecera
+La etiqueta `<header>` contiene la imagen de fondo y los textos del Header.
+
+### Imagen de Fondo
+Clase de Tailwind: `bg-[url('../../public/cabecera_2.png')]`.
+
+### Estilos aplicados a la imagen de fondo:
+- **`bg-cover`:** Ajusta la imagen para que cubra todo el espacio.
+- **`bg-cover`:** Centra la imagen de fondo.
+
+### Dimensiones:
+- **`w-full`:** Ocupa todo el ancho disponible.
+- **`h-[274px]`:** Altura fija de 274px.
+
+### Sombra:
+- **`shadow-md`:** Agrega una sombra sutil para resaltar la cabecera.
+
+## Contenido Visual y Textual
+El contenido principal incluye un título y un subtítulo dentro de un <div></div> con las siguientes clases:
+
+### Título
+
+```HTML
+<h1 class="text-4xl md:text-7xl text-white drop-shadow-[0_7px_0.15px_rgba(0,0,0,1)] uppercase">
+    David <span class="text-white shadow-black font-bold">Cuevas Gil</span>
+</h1>
+```
+
+Contenido:
+- Nombre del desarrollador: David Cuevas Gil.
+Clases aplicadas:
+- **`text-4xl md:text-7xl`:** Tamaño de fuente adaptable según el tamaño de pantalla.
+- **`text-white`:** Texto en color blanco.
+- **`drop-shadow`:** Sombra para mejorar el contraste con la imagen de fondo.
+- **`uppercase`:** Convierte el texto a mayúsculas.
+- **`shadow-black font-bold`:** Resalta visualmente el segundo nombre con negrita y sombra negra.
+
+### Subtítulo
+
+```HTML
+<p class="text-2xl md:text-5xl mt-6 shadow-black font-bold text-white drop-shadow-[0_7px_0.15px_rgba(0,0,0,1)]">
+    Desarrollador Web
+</p>
+```
+
+Contenido:
+- Rol del desarrollador: Desarrollador Web.
+
+Clases aplicadas:
+- **`text-2xl md:text-5xl`:** Tamaño de fuente adaptable.
+- **`mt-6`:** Margen superior para separar del título principal.
+- **`font-bold`:** Texto en negrita.
+- **`text-white`:** Texto en color blanco.
+- **`drop-shadow`:** Aplica sombra al texto para mejorar legibilidad.
+
+## Recursos Utilizados
+### Imagen de Fondo
+- Nombre: **`cabecera_2.png`**.
+- Ubicación: ../../../assets/images/cabecera_2.png
+Formato: PNG.
+Descripción: Esta imagen es utilizada como fondo del Header, aportando un diseño visual atractivo y profesional.
+
+### Conclusión
+
+El componente Header combina elementos visuales impactantes con contenido textual optimizado, asegurando una experiencia visual atractiva y profesional. La utilización de Tailwind CSS facilita la creación de un diseño responsivo y moderno, adaptable a cualquier dispositivo.
+

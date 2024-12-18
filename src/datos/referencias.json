@@ -1,0 +1,24 @@
+{
+  "contactos": [
+    {
+      "nombre": "Fernando Fernández López",
+      "empresa": "Microsoft Corporation",
+      "puesto": "Desarrollador Backend"
+    },
+    {
+      "nombre": "Ana Maria Fernandez Ponce",
+      "empresa": "Banco Santander",
+      "puesto": "Desarrolladora Front-end Senior"
+    },
+    {
+      "nombre": "Carmen Rodriguez Guzman",
+      "empresa": "Google LLC",
+      "puesto": "Project Manager"
+    },
+    {
+      "nombre": "Francisco Martinez Campos",
+      "empresa": "Telefonica",
+      "puesto": "Administrador de base de datos"
+    }
+  ]
+}  

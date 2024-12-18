@@ -1,0 +1,23 @@
+[
+  {
+    "titulo": "Administrador de contenidos web",
+    "empresa": "Gran Empresa",
+    "periodo": "2023 - Actualidad",
+    "responsabilidades": [
+      "Diseñar y estructurar contenido",
+      "Optimizar los motores de búsqueda (SEO)",
+      "Mantenimiento y actualización de contenido"
+    ]
+  },
+  {
+    "titulo": "Analista de contenidos",
+    "empresa": "Empresa Mediana",
+    "periodo": "Sept 2022 - 2023",
+    "responsabilidades": [
+      "Diseñar y estructurar contenido",
+      "Optimizar los motores de búsqueda (SEO)",
+      "Mantenimiento y actualización de contenido"
+    ]
+  }
+]
+  
